@@ -1,0 +1,41 @@
+
+texturepack.png
+size: 128, 32
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+Block
+  rotate: false
+  xy: 2, 2
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
+Player
+  rotate: false
+  xy: 19, 2
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: 1
+Player
+  rotate: false
+  xy: 36, 2
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: 2
+Player
+  rotate: false
+  xy: 53, 2
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: 3
+Player
+  rotate: false
+  xy: 70, 2
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: 4
