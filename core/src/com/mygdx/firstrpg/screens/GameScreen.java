@@ -25,7 +25,6 @@ public class GameScreen extends ScreenAdapter {
         camera.update();
         viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
         player = new Player();
-        player.attachCamera(camera);
         block = new Block();
     }
 
@@ -37,6 +36,7 @@ public class GameScreen extends ScreenAdapter {
         player.move(delta);
 
         batch.begin();
+        camera.position.set(player.getPosition().x + player.getWidth() / 2, player.getPosition().y + player.getHeight() / 2, 0);
         camera.update();
         batch.setProjectionMatrix(camera.combined);
         player.render(batch, delta);

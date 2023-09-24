@@ -1,6 +1,5 @@
 package com.mygdx.firstrpg.objects;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -10,7 +9,7 @@ public abstract class PlainObject {
 
 
     private final TextureAtlas atlas = FirstRPG.manager.get("textureatlas/texturepack.atlas");
-    private TextureRegion sprite;
+    protected TextureRegion sprite;
     protected Rectangle hitBox = new Rectangle();
     protected float height = 50f;
     protected float width = 50f;
@@ -18,7 +17,6 @@ public abstract class PlainObject {
     protected boolean isAnimated = false;
     protected Animation<TextureRegion> animation;
     protected float animationTime = 0;
-    protected OrthographicCamera boundCamera = null;
 
     public boolean collides(Rectangle hitBox) {
         return this.hitBox.overlaps(hitBox);
@@ -58,9 +56,9 @@ public abstract class PlainObject {
         this.isAnimated = isAnimated;
     }
 
-    public void setAnimated(boolean isAnimated, float resetTime) {
+    public void setAnimated(boolean isAnimated, float startAt) {
         if (!isAnimated) {
-            this.animationTime = resetTime;
+            this.animationTime = startAt;
         }
         this.isAnimated = isAnimated;
     }
@@ -69,16 +67,14 @@ public abstract class PlainObject {
         this.animation = new Animation<TextureRegion>(animationTime, atlas.findRegions(region), playMode);
     }
 
-    public void setAnimationTime(float animationTime) {
-        this.animationTime = animationTime;
-    }
+    public void setAnimationTime(float animationTime) {this.animationTime = animationTime;}
 
-    public void attachCamera(OrthographicCamera camera) {
-        this.boundCamera = camera;
-    }
+    public Rectangle getHitBox() {return this.hitBox;}
 
-    public void detachCamera() {
-        this.boundCamera = null;
-    }
+    public float getHeight() {return this.height;}
+
+    public float getWidth() {return this.width;}
+
+    public Vector2 getPosition() {return this.position;}
 
 }

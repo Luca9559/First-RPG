@@ -17,25 +17,22 @@ public class Player extends MovableObject {
     @Override
     public void move(float delta) {
         boolean pressed = false;
-        float positionUpdate;
+        float positionUpdate = velocity * delta;
+
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            positionUpdate = moveUp(delta);
-            if (boundCamera != null) boundCamera.translate(0, positionUpdate);
+            position.y += positionUpdate;
             pressed = true;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            positionUpdate = moveLeft(delta);
-            if (boundCamera != null) boundCamera.translate(-positionUpdate, 0);
+            position.x -= positionUpdate;
             pressed = true;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            positionUpdate = moveRight(delta);
-            if (boundCamera != null) boundCamera.translate(positionUpdate, 0);
+            position.x += positionUpdate;
             pressed = true;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-            positionUpdate = moveDown(delta);
-            if (boundCamera != null) boundCamera.translate(0, -positionUpdate);
+            position.y -= positionUpdate;
             pressed = true;
         }
         setAnimated(pressed, 0.1f);
